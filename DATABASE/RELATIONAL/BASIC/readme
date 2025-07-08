@@ -1,0 +1,17 @@
+# 1. Connect to the database
+db = psycopg2.connect(...)
+
+# 2. Create a cursor (your SQL executor)
+cursor = db.cursor()
+
+# 3. Use the cursor to execute SQL
+cursor.execute("SELECT * FROM users")
+
+# 4. Get data (if it's a SELECT)
+rows = cursor.fetchall()
+
+# 5. Close the cursor
+cursor.close()
+
+# 6. Optionally close the connection (Flask does this at the end of request)
+db.close()
