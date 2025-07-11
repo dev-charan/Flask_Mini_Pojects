@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Files</title>
+</head>
+<body>
+    <h2>📤 Upload Files</h2>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="files" multiple><br><br>
+        <input type="submit" value="Upload">
+    </form>
+
+    {% if files %}
+        <h3>📂 Uploaded Files:</h3>
+        <ul>
+        {% for file in files %}
+            <li>
+                <a href="{{ url_for('uploaded_file', filename=file) }}" target="_blank">{{ file }}</a>
+                | <a href="{{ url_for('delete_file', filename=file) }}">🗑️ Delete</a>
+            </li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>
